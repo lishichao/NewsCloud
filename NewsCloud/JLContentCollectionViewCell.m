@@ -30,8 +30,6 @@
 
 @property (nonatomic , strong) JLPageBean *pageBean;//本页的数据
 
-@property (nonatomic , strong) UITableView *contentTBV;
-
 @property (nonatomic , strong) CZBottomMenu *menu;
 
 @property (nonatomic , strong) NSMutableArray  *bannerArray;
@@ -141,9 +139,7 @@
     {
         JLTwoBaseTVC *cell = [JLTwoBaseTVC twoTableViewCellWithTableView:tableView];
         cell.cellContent = content;
-//        cell.meidiumIcon.image = [UIImage imageNamed:@"brand_round_50px"];
-//        cell.readCommentLike.text = @"测试";
-        
+
         return cell;
 
         
@@ -160,22 +156,17 @@
                           channelName:(NSString *)channelName
                                 Index:(NSInteger )index
 {
-//    NSInteger allChannels = APPDELEGATE.channelList.count;
-//    if (index == 0)
-//    {
-//        [self.contentTBV.mj_header beginRefreshing];
-//
-//    }
-//    [self.contentTBV.mj_header beginRefreshing];
-//    [self.contentTBV.mj_footer beginRefreshing];
-    //如果内存有了该item的就直接刷新
-//    if ([_AllPageBeans[index] isKindOfClass:[JLPageBean class]]) {
-//        
-//        _pageBean = _AllPageBeans[index];
-//        
-//        [self.contentTBV reloadData];
-//    }else
-//    {
+
+    if (index == 0)
+    {
+        //不要像我怎么写，懒得改了。
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [self.contentTBV.mj_header beginRefreshing];
+        });
+        
+    }
+
         __weak typeof(self) weakSelf =self;
         //表明第一次打开或者重新登录app了->先去数据库取数据
         [JLCoreDataVM getChannelDataWithChannelId:channelId success:^(NSData *data)
@@ -184,31 +175,11 @@
             {
                 
                 weakSelf.pageBean = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-                //插入该index对应的内容table的数据
-//                [weakSelf.AllPageBeans replaceObjectAtIndex:index withObject:weakSelf.pageBean];
                 
                 //刷新
                 
                 [weakSelf.contentTBV reloadData];
                 
-                //清空缓存 最多保留5列
-//                dispatch_async(dispatch_get_global_queue(0,0), ^{
-//                    
-//                    if (index > 2 && index < allChannels - 2 ) {
-//                        
-//                        for (NSInteger i = 0; i < index - 2; i ++) {
-//                            
-//                            [weakSelf.AllPageBeans replaceObjectAtIndex:i withObject:[NSNull null]];
-//                        }
-//                        for (NSInteger i = index + 3; i < allChannels; i ++)
-//                        {
-//                            
-//                            [weakSelf.AllPageBeans replaceObjectAtIndex:i withObject:[NSNull null]];
-//                        }
-//                        
-//                    }
-//                    
-//                });
 
                 
             }else //数据库没有该频道数据
@@ -241,31 +212,12 @@
                      weakSelf.pageBean = pagebean;
                      
                      //插入该index对应的内容table的数据
-//                     [weakSelf.AllPageBeans replaceObjectAtIndex:index withObject:pagebean];
                      
                      //刷新
                      
                      [weakSelf.contentTBV reloadData];
                      
-                     //清空缓存 最多保留5列
-//                     dispatch_async(dispatch_get_global_queue(0,0), ^{
-//                         
-//                         if (index > 2 && index < allChannels - 2 ) {
-//                             
-//                             for (NSInteger i = 0; i < index - 2; i ++) {
-//                                 
-//                                 [weakSelf.AllPageBeans replaceObjectAtIndex:i withObject:[NSNull null]];
-//                             }
-//                             for (NSInteger i = index + 3; i < allChannels; i ++)
-//                             {
-//                                 
-//                                 [weakSelf.AllPageBeans replaceObjectAtIndex:i withObject:[NSNull null]];
-//                             }
-//                             
-//                         }
-//                         
-//                     });
-                     
+
                      
                      [MBProgressHUD hideHUDForView:weakSelf.contentView animated:YES];
                      

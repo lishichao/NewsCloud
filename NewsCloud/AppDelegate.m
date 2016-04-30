@@ -32,20 +32,22 @@ static BOOL isBackGroundActivateApplication;
 
 @implementation AppDelegate
 
--(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    //获取用户信息
-    [JLCoreDataVM getUserInfoSuccess:^(UserInfo *userInfo) {
-        
-        if (userInfo.userId.length) {
-            
-            self.userId = userInfo.userId;
-            
-        }
-    }];
-    
-    return YES;
-}
+//-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+//{
+//    
+//    //获取用户信息
+//    [JLCoreDataVM getUserInfoSuccess:^(UserInfo *userInfo) {
+//        
+//        if (userInfo.userId.length) {
+//            
+//            self.userId = userInfo.userId;
+//            
+//        }
+//    
+//    }];
+//    
+//    return YES;
+//}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -82,6 +84,11 @@ static BOOL isBackGroundActivateApplication;
             if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]){
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
+                
+//******************************用户信息设置有点问题，关闭了，用这个模拟一下*************************************//
+                [JLCoreDataVM saveUserInfoWith:@"JimmyStudio" UserName:@"JimmyStudio"];
+//****************************************************************************************//
+                
                 //第一次打开APP 更新所有用户频道
                 [JLCoreDataVM updateMyChannelsIntoDBWith:channelLists.channelList];
                 self.channelList = channelLists.channelList;
@@ -147,6 +154,7 @@ static BOOL isBackGroundActivateApplication;
     }
     //角标清0
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
     
     [NSThread sleepForTimeInterval:2.0f];
     

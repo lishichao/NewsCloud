@@ -10,6 +10,7 @@
 
 @interface JLContentCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic , strong) UITableView *contentTBV;
 
 @property (nonatomic , assign) NSInteger index;
 

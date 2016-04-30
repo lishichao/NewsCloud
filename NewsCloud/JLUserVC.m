@@ -87,6 +87,18 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self creatUI];
+    
+    //获取用户信息
+        [JLCoreDataVM getUserInfoSuccess:^(UserInfo *userInfo) {
+    
+            if (userInfo.userId.length) {
+    
+                APPDELEGATE.userId = userInfo.userId;
+    
+            }
+        
+        }];
+    
 }
 
 
