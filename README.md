@@ -11,7 +11,11 @@ UI是自己PS调色的，也挺美观的<br>
 
 不合理的地方也不少，可以优化，仅供参考<br>
 
-#觉得不错就点个Star吧★★★★★★★★★★★★★★★<br>
+#'觉得不错就点个Star吧'<br>
+
+[联系我](http://www.jianshu.com/users/75cbe5be8afb/latest_articles)<br>
+
+★★★★★★★★★★★★★★★<br>
 
 截图<br>
 
