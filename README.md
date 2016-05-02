@@ -13,7 +13,7 @@ UI是自己PS调色的，也挺美观的<br>
 
 #`觉得不错就点个Star吧` I NEED YOUR STAR <br>
 
-#[简书联系我](http://www.jianshu.com/users/75cbe5be8afb/latest_articles)<br>
+#[简书联系我](http://www.jianshu.com/users/75cbe5be8afb/latest_articles "CONTACT ME")<br>
 
 ★★★★★★★★★★★★★★★<br>
 
