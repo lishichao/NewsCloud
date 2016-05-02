@@ -24,3 +24,6 @@ UI是自己PS调色的，也挺美观的<br>
 ![](https://github.com/JimmyStudio/NewsCloud/blob/master/pic/IMG_2323.PNG)<br>
 
 ![](https://github.com/JimmyStudio/NewsCloud/blob/master/pic/IMG_2324.PNG)<br>
+
+#LICENSE<br>
+Apache
