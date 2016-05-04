@@ -81,6 +81,12 @@
 
 -(void)creatUI{
     
+    UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 80)/2, 31, 80, 20)];
+    titleLbl.textColor = FONTCOLOR;
+    titleLbl.font = [UIFont systemFontOfSize:16];
+    titleLbl.text = @"我的频道";
+    [self.view addSubview:titleLbl];
+    
     UILabel *topLine = [[UILabel alloc]initWithFrame:CGRectMake(0, 63.5, SCREEN_WIDTH, 0.5)];
     topLine.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:topLine];
