@@ -70,9 +70,8 @@
 
     }else
     {
-        self.meidiumIcon.image = [UIImage imageNamed:@"brand_round_50px"];
+        self.meidiumIcon.image = [UIImage imageNamed:@"brand_holder"];
     }
-    self.meidiumIcon.image = [UIImage imageNamed:cellContent.source];
     JLSentimentTag *sentimentTag = cellContent.sentiment_tag;
     self.readCommentLike.text = [NSString stringWithFormat:@"阅读%@ · 评论%@ · 喜欢%@",cellContent.readcount,cellContent.comcount,cellContent.likecount];
 
